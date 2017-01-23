@@ -1,5 +1,3 @@
-# tutorial-spring-boot
-
 Spring Boot Tutorial, from the scratch
 ===================
 
@@ -34,17 +32,18 @@ Controllers and Static Resources
 
 ---
 ### Step 2.
+
 JDBC Connection
 
 Run Mysql, https://hub.docker.com/_/mysql/
 
 ```
-$ MYSQL_CONTAINER_NAME="mysql"
-$ MYSQL_DATABASE="jbp"
-$ MYSQL_ROOT_PASSWORD="root-password"
-$ MYSQL_USER="jbp-user"
-$ MYSQL_PASSWORD="jbp-user-password"
-$ docker run \
+MYSQL_CONTAINER_NAME="mysql"
+MYSQL_DATABASE="jbp"
+MYSQL_ROOT_PASSWORD="root-password"
+MYSQL_USER="jbp-user"
+MYSQL_PASSWORD="jbp-user-password"
+docker run \
   --name ${MYSQL_CONTAINER_NAME}  -d \
   -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
   -e MYSQL_USER=${MYSQL_USER} \
@@ -57,7 +56,7 @@ $ docker run \
 create mysql sample table
 
 ```
-$ docker exec -it mysql bash
+docker exec -it mysql bash
 # mysql -u jbp-user -p
 mysql> use jbp
 mysql> CREATE TABLE SAMPLE (
@@ -67,21 +66,39 @@ mysql> CREATE TABLE SAMPLE (
     created_datetime DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_datetime DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id) );
+mysql> INSERT INTO SAMPLE ( email, name ) VALUES ( 'yohany@gmail.com', 'John Kim' );
 mysql> exit
 # exit
 ```
 
-Add dependencies into pom.xml
+Add dependencies into `pom.xml`
 
 ```
-  <dependency>
-		<groupId>org.mybatis.spring.boot</groupId>
-		<artifactId>mybatis-spring-boot-starter</artifactId>
-		<version>1.2.0</version>
-	</dependency>
-	<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>6.0.5</version>
-	</dependency>
+<dependency>
+  <groupId>org.mybatis.spring.boot</groupId>
+  <artifactId>mybatis-spring-boot-starter</artifactId>
+  <version>1.2.0</version>
+</dependency>
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <version>6.0.5</version>
+</dependency>
 ```
+
+Add datasource configuration into `src/main/resources/application.properties`
+
+```
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/jbp?autoReconnect=true&useSSL=false
+spring.datasource.username=jbp-user
+spring.datasource.password=jbp-user-password
+```
+
+Add SQL Mapper class `gsshop.jbp.dashboard.mapper.SampleMapper` and modify Controller `gsshop.jbp.dashboard.controller.DashboardAPIController`
+
+
+* API Test, http://localhost:8080/api/sample/1
+
+---
+### Step 3.
