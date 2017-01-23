@@ -1,0 +1,9 @@
+
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+gsshop.boot.starter.handlebars.autoconfigure.handlebars.HandlebarsAutoConfiguration,\
+gsshop.boot.starter.handlebars.autoconfigure.handlebars.HandlebarsHelpersAutoConfiguration
+
+# Template availability providers
+org.springframework.boot.autoconfigure.template.TemplateAvailabilityProvider=\
+gsshop.boot.starter.handlebars.autoconfigure.handlebars.HandlebarsTemplateAvailabilityProvider
