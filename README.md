@@ -110,7 +110,7 @@ replace Mapper Query Annotation with Query XML
 * /src/main/resources/mapper/SampleMapper.xml
 
 ---
-### Step 3.
+### Step 3-1.
 
 Create tables and insert datas.
 
@@ -145,3 +145,4 @@ mysql> INSERT INTO AUTHORITY VALUES ('ally', 'USER' );
 
 * /src/main/java/gsshop/jbp/dashboard/security/\*.java
 * /src/main/resources/mapper/UserMapper.xml
+* test code
