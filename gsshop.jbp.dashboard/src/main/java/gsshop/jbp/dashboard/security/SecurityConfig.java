@@ -21,10 +21,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.csrf().disable()
-		.authorizeRequests()
-		.anyRequest().authenticated()
-		.and()
-		.formLogin();
+        .authorizeRequests()
+            .antMatchers("/", "/home").permitAll()
+            .anyRequest().authenticated()
+            .and()
+        .formLogin()
+            .loginPage("/login")
+            .permitAll()
+            .and()
+        .logout()
+            .permitAll();
 	}
 
 	@Override
