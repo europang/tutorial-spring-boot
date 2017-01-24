@@ -31,7 +31,7 @@ Controllers and Static Resources
 * Static Resource Test, http://localhost:8080/sample-image.jpg
 
 ---
-### Step 2.
+### Step 2-1.
 
 JDBC Connection
 
@@ -101,4 +101,47 @@ Add SQL Mapper class `gsshop.jbp.dashboard.mapper.SampleMapper` and modify Contr
 * API Test, http://localhost:8080/api/sample/1
 
 ---
+### Step 2-2.
+
+replace Mapper Query Annotation with Query XML
+
+* /src/main/java/gsshop/jbp/dashboard/mapper/SampleMapper.java
+* /src/main/resources/application.properties
+* /src/main/resources/mapper/SampleMapper.xml
+
+---
 ### Step 3.
+
+Create tables and insert datas.
+
+```
+docker exec -it mysql bash
+
+# mysql -u jbp-user -p
+
+mysql> use jbp
+
+mysql> CREATE TABLE USER (
+    username            VARCHAR(255) NOT NULL UNIQUE,
+    password            VARCHAR(255) NOT NULL,
+    name                VARCHAR(255) NOT NULL,
+    isAccountNonExpired BOOLEAN,
+    isAccountNonLocked  BOOLEAN,
+    isCredentialsNonExpired BOOLEAN,
+    isEnabled           BOOLEAN,
+    PRIMARY KEY (username) );
+
+mysql> CREATE TABLE AUTHORITY (
+    username      VARCHAR(255)  NOT NULL,
+    authorityName VARCHAR(20)   NOT NULL );
+
+mysql> INSERT INTO USER VALUES ('john', '1234', 'John Kim', true, true, true, true);
+mysql> INSERT INTO USER VALUES ('ally', '1234', 'Ally Kim', true, true, true, true);
+mysql> INSERT INTO AUTHORITY VALUES ('john', 'ADMIN');
+mysql> INSERT INTO AUTHORITY VALUES ('john', 'USER' );
+mysql> INSERT INTO AUTHORITY VALUES ('ally', 'USER' );
+
+```
+
+* /src/main/java/gsshop/jbp/dashboard/security/\*.java
+* /src/main/resources/mapper/UserMapper.xml
