@@ -146,3 +146,16 @@ mysql> INSERT INTO AUTHORITY VALUES ('ally', 'USER' );
 * /src/main/java/gsshop/jbp/dashboard/security/\*.java
 * /src/main/resources/mapper/UserMapper.xml
 * test code
+
+
+---
+### Step 3.
+https://spring.io/guides/gs/securing-web/
+
+---
+### Step 4-1.
+add ui template (https://github.com/puikinsh/gentelella)
+
+---
+### Step 4-2.
+convert handlebars template engine.
