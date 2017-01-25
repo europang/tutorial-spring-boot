@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {{> _common/header title='Login'}}
+  </head>
+
+  <body class="login">
+    <div>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+          	{{#param.error}}
+          		<div> Invalid username and password.</div>
+          	{{/param.error}}
+          	{{#param.logout}}
+          		<div> You have been logged out.</div>
+          	{{/param.logout}}
+	        
+            <form action="/login" method="post">
+              <input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}" />
+              <h1>Login Form</h1>
+              <div>
+                <input type="text" name="username" class="form-control" placeholder="Username" />
+              </div>
+              <div>
+                <input type="password" name="password" class="form-control" placeholder="Password" />
+              </div>
+              <div>
+              	<input type="submit" value="Sign In" class="btn btn-default submit" />
+                <a class="reset_pass" href="#">Lost your password?</a>
+              </div>
+              <div class="clearfix"></div>
+
+              <div class="separator">
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
