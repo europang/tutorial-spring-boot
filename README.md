@@ -152,6 +152,7 @@ Open your Web browser with the below URLs
 ## 4. Run MySQL with docker for test JDBC Connection
 
 Install Docker with easy to use installers,  https://www.docker.com/products/overview
+(If you are using a window 7 OS, then visit https://www.docker.com/products/docker-toolbox )
 
 Run Mysql with https://hub.docker.com/_/mysql/
 
