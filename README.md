@@ -168,7 +168,8 @@ docker run \
   -e MYSQL_PASSWORD=${MYSQL_PASSWORD} \
   -e MYSQL_DATABASE=${MYSQL_DATABASE} \
   -p 3306:3306 \
-  mysql:5.7
+  
+  mysql:5.7 (this is not a command. it's just a version.)
 ```
 
 Create mysql sample table and insert datas
