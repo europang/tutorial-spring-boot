@@ -85,7 +85,7 @@ public class DashboardAPIController {
 
 	@RequestMapping("/api/sample/string")
 	public String sampleString() {
-		return "Hello Workd";
+		return "Hello World";
 	}
 
 	@RequestMapping("/api/sample/object")
