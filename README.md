@@ -227,6 +227,11 @@ spring.datasource.username=jbp-user
 spring.datasource.password=jbp-user-password
 ```
 
+If you use a window OS 7 and Docker Machine,
+STS cann't connect to mysql using localhost(127.0.0.1)
+You have to use Docker VM IP (192.168.99.100) instead of localhost IP(127.0.0.1)
+ex)
+spring.datasource.url=jdbc:mysql://192.168.99.100:3306/jbp?autoReconnect=true&useSSL=false
 
 
 Create SQL Mapper Interface class to retrieve datas from MySQL.
