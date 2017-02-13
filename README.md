@@ -171,6 +171,27 @@ docker run \
   mysql:5.7
 ```
 
+데이터베이스 저장 위치를 host로 사용하기
+
+데이터베이스를 띄우지만, 그냥 사용하게 되면, 컨테이너 이미지 안에 파일을 저장합니다.
+호스트파일에 저장 할려면, --volume이라는 옵션을 사용해야 합니다.
+
+Volume을 지정해서 실행하기
+
+docker \
+  run \
+  --detach \
+  --volume /opt/mysql:/var/lib/mysql \
+  --env MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
+  --env MYSQL_USER=${MYSQL_USER} \
+  --env MYSQL_PASSWORD=${MYSQL_PASSWORD} \
+  --env MYSQL_DATABASE=${MYSQL_DATABASE} \
+  --name ${MYSQL_CONTAINER_NAME} \
+  --publish 3306:3306 \
+  --name mysql-volume \
+  mysql:latest;
+  
+
 Create mysql sample table and insert datas
 
 ```Shell
